@@ -1,1 +1,7 @@
-Readme
+# Statistical Dimension using Monte Carlo method
+
+Statistical dimension is an important and useful quantity for the study of regularized least-squares with sparsity constraints and, in our case, estimation of precision matrices for Gaussian graphical models. This quantity is an intrinsic property of a convex cone and agrees with the ordinary linear dimension when that convex cone is a linear subspace. The definition of the statistical dimension of a cone is the expectation of the squared norm of the projection of a standard multivariate Gaussian random variable onto the cone of interest. In other words, we randomly choose a vector in R^n according to the standard normal distribution, find the closest point to that vector belonging to the cone in question, take the squared norm of that closest point, and take the expectation. 
+
+Here our particular interest will be when that cone is a cone of positive definite matrices with the special property that certain entries in the matrix are fixed to be zero. This is the cone of possible precision matrices for a graphical model where the fixed zero entries correspond to zeros in the adjacency matrix of the given graph. 
+
+We compute this using a batched Monte-carlo algorithm. This implementation is written in Tensorflow, to accomodate hardware acceleration made avaiable by Google's cloud TPU's. This is a very laborious calculation and without the hardware acceleration this method would be impractical. 
